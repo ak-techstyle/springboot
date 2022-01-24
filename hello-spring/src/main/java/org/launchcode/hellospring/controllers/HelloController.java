@@ -1,6 +1,7 @@
 package org.launchcode.hellospring.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -25,18 +26,21 @@ public class HelloController {
     }
 
     // handle controller method with parameter
-    // lives @path localhost:8080/hello/query-str?fname=Yeshi
-    @RequestMapping(method={RequestMethod.GET, RequestMethod.POST}, value="query-str")
-    @ResponseBody
-    public String getParam(@RequestParam String fname){
-        return "hello " + fname + "!";
+    // lives @path localhost:8080/hello/query?name=Yeshi
+    @RequestMapping(method={RequestMethod.GET, RequestMethod.POST}, value="query")
+    public String getParam(@RequestParam String name, Model model){     //model class used to pass data btw ctrl & view
+        String greet = "Hello, " + name + "!";  //create a string variable
+        //first-param: template-variable , second-param: local-variable (replace first arg with the second arg)
+        model.addAttribute("greeting", greet);  //add string variable to the model object using addAttribute method
+        return "hello"; //model is passed into the view by rendering the thymeleaf template i.e. query.html
     }
 
     // lives @path localhost:8080/hello/fname
     @GetMapping("{fname}")
-    @ResponseBody
-    public String getQueryPath(@PathVariable String fname){
-        return "hello " + fname + "!";
+    public String getQueryPath(@PathVariable String fname, Model model){
+        String greet = "hello, " + fname + "!";
+        model.addAttribute("greeting", "greet");
+        return "hello";
     }
 
     // lives @ path localhost:8080/hello/form

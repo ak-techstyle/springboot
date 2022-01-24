@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+</head>
+<body>
+<!-- what's between the dollar sign is the data i.e. variable passed into the template
+when we display this view using template, thymeleaf looks for a variable called greeting
+if it sees one, it replace the contents of this paragraph element with the value of
+that greeting variable -->
+<p th:text="${greeting}">Hello, Spring</p>
+</body>
+</html>
