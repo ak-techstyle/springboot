@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+</head>
+<body>
+    <!-- construct for loop in thymeleaf -->
+    <ul>
+        <th:block th:each="name: ${namelist}">
+            <li th:text="${name}"></li>
+        </th:block>
+    </ul>
+
+
+</body>
+</html>

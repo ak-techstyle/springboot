@@ -4,6 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Controller
 @RequestMapping("hello")    // all methods routes begin with the same root path localhost:8080/hello
@@ -47,6 +50,17 @@ public class HelloController {
     @GetMapping("form")
     public String helloForm(){
         return "form";
+    }
+
+    @GetMapping("forloop")
+    public String loopList(Model model){
+        List<String> names = new ArrayList<>();
+        names.add("Yeshi");
+        names.add("Tashi");
+        names.add("Wanpo");
+        names.add("Norbu");
+        model.addAttribute("namelist", names); //replace template names-temp with names list/obj
+        return "template4loop";
     }
 
 
